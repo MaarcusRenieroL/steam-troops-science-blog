@@ -35,3 +35,16 @@ export const generateErrorMessage = (data: any, status: number) => {
     },
   );
 };
+
+export const getAllBlogs = async (count?: number) => {
+  const res = await fetch("http://localhost:3000/api/blogs", {
+    cache: "no-store",
+  });
+
+  const data = await res.json();
+
+  if (count) {
+    return data.blogs.slice(0, count);
+  }
+  return data.blogs;
+};

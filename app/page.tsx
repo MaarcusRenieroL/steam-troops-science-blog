@@ -1,7 +1,9 @@
+import HomeSection from "./sections/HomeSection";
+
 export default function Home() {
   return (
-    <div>
-      <h1>Hellow</h1>
-    </div>
+    <main>
+      <HomeSection />
+    </main>
   );
 }
