@@ -48,6 +48,7 @@ const HomeSection = async () => {
             </button>
           </Link>
         </div>
+        <hr className="p-3 my-4" />
       </div>
     </section>
   );
