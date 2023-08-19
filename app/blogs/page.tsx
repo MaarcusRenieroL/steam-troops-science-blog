@@ -15,7 +15,7 @@ export default async function Page() {
         <div className="mr-auto flex md:w-1/4 xs:w-2/4 items-center gap-6">
           <p className="font-semibold text-2xl">Filter</p>
           <select name="category" id="select" className="md:px-5 xs:px-2 w-3/4 mx-2 py-3 rounded-lg">
-            {categories.map((category: { id: Key | readonly string[] | null | undefined; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | PromiseLikeOfReactNode | null | undefined; }) => (
+            {categories.map((category) => (
               <option className="rounded-md bg-gray-100" key={category.id} value={category.id}>{category.name}</option>
             ))}
           </select>
