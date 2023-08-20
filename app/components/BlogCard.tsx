@@ -8,24 +8,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { BlogItemType } from "@/lib/types";
+import Link from "next/link";
 
-type Props = {
-  id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  userId: string;
-  createdAt: string;
-  updatedAt: string;
-  categoryId: string;
-  location: string;
-};
+type Props = BlogItemType;
 
 function getTextFromHTML(html: string) {
   const element = document.createElement("span");
   element.innerHTML = html;
 
-  return element.innerText;
+  return element.innerText.slice(0, 300);
 }
 
 const BlogCard = (props: Props) => {
@@ -50,9 +42,9 @@ const BlogCard = (props: Props) => {
         </p>
       </CardContent>
       <CardFooter className="w-full h-full p-3">
-        <button className="ml-auto mt-auto border-[1px] p-3 rounded-lg hover:bg-violet-600 hover:text-violet-100 duration-500">
+        <Link href={`/blogs/view/${props.id}`} className="ml-auto mt-auto border-[1px] p-3 rounded-lg hover:bg-violet-600 hover:text-violet-100 duration-500">
           View More
-        </button>{" "}
+        </Link>{" "}
       </CardFooter>
     </Card>
   );

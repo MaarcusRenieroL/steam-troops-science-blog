@@ -1,9 +1,12 @@
 import { getAllBlogs } from "@/lib/helpers";
-import { categories, blogs } from "@/lib/utils";
+import { categories } from "@/lib/utils";
 import { FaSearch } from "react-icons/fa";
 import BlogCard from "../components/BlogCard";
+import { BlogItemType } from "@/lib/types";
 
 export default async function Page() {
+
+  const blogs = await getAllBlogs();
 
   return (
     <section className="w-full h-full">
@@ -27,7 +30,7 @@ export default async function Page() {
         </div>
       </nav>
       <div className="flex gap-4 flex-wrap justify-center m-1">
-          {blogs.map((blog) => (
+          {blogs.map((blog:BlogItemType) => (
             <BlogCard {...blog} key={blog.id} />
           ))}
       </div>
