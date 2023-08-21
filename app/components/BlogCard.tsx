@@ -16,10 +16,12 @@ import { MdLocationCity } from "react-icons/md";
 type Props = BlogItemType;
 
 function getTextFromHTML(html: string) {
-	const element = document.createElement("span");
+	if (process.browser) {
+		const element = document.createElement("span");
 	element.innerHTML = html;
 
 	return element.innerText.slice(0, 300);
+	}
 }
 
 const deleteBlog = async (id: string) => {
