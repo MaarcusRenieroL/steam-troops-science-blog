@@ -11,7 +11,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 export default function Page() {
 	const { data: session } = useSession();
@@ -69,7 +69,6 @@ export default function Page() {
 
 	return (
 		<section className="w-full">
-			<Toaster position="bottom-center" />
 			<div className="flex items-center justify-between p-4">
 				<div className="w-1/4">
 					<span className="font-extrabold mx-3">Author</span>

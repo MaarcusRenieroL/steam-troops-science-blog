@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { BlogItemType } from "@/lib/types";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 type Props = BlogItemType;
 
@@ -20,7 +21,27 @@ function getTextFromHTML(html: string) {
 	return element.innerText.slice(0, 300);
 }
 
-const BlogCard = (props: Props) => {
+const deleteBlog = async (id: string) => {
+    const res = await fetch(`http://localhost:3000/api/blogs/${id}`, {
+        cache: "no-store",
+        method: "DELETE",
+    });
+}
+
+export default function BlogCard (props: Props) {
+
+	const handleDelete = async () => {
+		try {
+			toast.loading("Deleting Blog", { id: "deleteBlog"})
+			await deleteBlog(props.id);
+			toast.success("Deleted Successfully", { id: "deleteBlog"})
+		} catch(error) {
+			toast.error("Failed to Delete" , { id: "deleteBlog"})
+			return console.log(error);
+
+		}
+	}
+
 	return (
 		<Card className="hover:border-slate-950 duration-500 flex flex-col w-[400px] h-[550px] mx-4 my-2 rounded-lg">
 			<CardHeader>
@@ -41,16 +62,18 @@ const BlogCard = (props: Props) => {
 					{getTextFromHTML(props.description)}
 				</p>
 			</CardContent>
-			<CardFooter className="w-full h-full p-3">
+			<CardFooter className="w-full h-full p-3 flex justify-between items-center">
 				<Link href={`/blogs/view/${props.id}`} className="mr-auto mt-auto border-[1px] p-3 rounded-lg hover:bg-violet-600 hover:text-violet-100 duration-500">
 					View More
 				</Link>
-				{props.isProfile && <Link href={`/blogs/edit/${props.id}`} className="ml-auto mt-auto border-[1px] p-3 rounded-lg hover:bg-violet-600 hover:text-violet-100 duration-500">
+				{props.isProfile && <Link href={`/blogs/edit/${props.id}`} className="mt-auto border-[1px] p-3 rounded-lg hover:bg-violet-600 hover:text-violet-100 duration-500">
 					Edit Blog
 				</Link>}
+				{props.isProfile && <button onClick={handleDelete} className="mt-auto ml-5 border-[1px] p-3 rounded-lg hover:bg-violet-600 hover:text-violet-100 duration-500">
+					Delete Blog
+				</button>}
 			</CardFooter>
 		</Card>
 	);
 };
 
-export default BlogCard;

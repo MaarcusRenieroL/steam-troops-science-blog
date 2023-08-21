@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Provider from "./components/Provider";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Steam Troops Science Blog",
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen flex flex-col">
         <Provider>
+          <Toaster position="bottom-center"/>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
