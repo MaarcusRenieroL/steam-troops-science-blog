@@ -126,7 +126,7 @@ export default function Page() {
 					{...register("category", { required: true })}
 				>
 					{categories.map((category) => (
-						<option value={category.id}>{category.name}</option>
+						<option value={category.id} key={category.id}>{category.name}</option>
 					))}
 				</select>
 			</div>

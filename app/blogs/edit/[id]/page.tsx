@@ -75,7 +75,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
             setIsLoading(false);
 
         });
-    }, [])
+    }, [params.id])
 
     const handlePost = async () => {
         const postData = {
