@@ -1,6 +1,5 @@
 import NextAuth, { AuthOptions } from "next-auth";
 
-import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { connectToDb } from "@/lib/helpers";
 import prisma from "@/prisma";
@@ -8,10 +7,6 @@ import bcrypt from "bcrypt";
 
 export const authOptions: AuthOptions = {
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
-    }),
     CredentialsProvider({
       name: "credentials",
       credentials: {
