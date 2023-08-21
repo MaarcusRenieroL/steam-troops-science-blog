@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Logo from "./Logo";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 const authLinks = [
   {
@@ -66,6 +66,7 @@ const Header = () => {
               </Link>
             ),
           )}
+          <button className="text-gray-900 text-lg font-semibold hover:text-violet-600 duration-300" onClick={() => signOut()}>Logout</button>
         </div>
       </nav>
     </section>
