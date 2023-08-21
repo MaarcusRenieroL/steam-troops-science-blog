@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { signOut, useSession } from "next-auth/react";
+import Drawer from "./Drawer";
 
 const authLinks = [
   {
@@ -50,7 +51,7 @@ const Header = () => {
 
   return (
     <section className="sticky w-full bg-gray-100">
-      <nav className="flex items-center justify-between px-8 py-4 bg-transparent">
+      <nav className="xs:hidden md:flex flex items-center justify-between px-8 py-4 bg-transparent">
         <div>
           <Logo />
         </div>
@@ -66,9 +67,17 @@ const Header = () => {
               </Link>
             ),
           )}
-          <button className="text-gray-900 text-lg font-semibold hover:text-violet-600 duration-300" onClick={() => signOut()}>Logout</button>
+          {status === "authenticated" && <button className="text-gray-900 text-lg font-semibold hover:text-violet-600 duration-300" onClick={() => signOut()}>Logout</button>}
         </div>
       </nav>
+      <div className="md:hidden xs:visible">
+        <div className="flex justify-between items-center p-6">
+            <div>
+              <Logo />
+            </div>
+            <Drawer />
+        </div>
+      </div>
     </section>
   );
 };
