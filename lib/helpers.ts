@@ -1,5 +1,4 @@
 import prisma from "@/prisma";
-import { data } from "autoprefixer";
 import { NextResponse } from "next/server";
 
 export const connectToDb = async () => {
@@ -37,7 +36,7 @@ export const generateErrorMessage = (data: any, status: number) => {
 };
 
 export const getAllBlogs = async (count?: number) => {
-  const res = await fetch("http://localhost:3000/api/blogs");
+  const res = await fetch("/api/blogs");
 
   const data = await res.json();
 
@@ -48,7 +47,7 @@ export const getAllBlogs = async (count?: number) => {
 };
 
 export const getBlogById = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/blogs/${id}`);
+  const res = await fetch(`/api/blogs/${id}`);
 
   const data = await res.json();
 
@@ -56,7 +55,7 @@ export const getBlogById = async (id: string) => {
 };
 
 export const getUserById = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/users/${id}`, {
+  const res = await fetch(`/api/users/${id}`, {
     next: {
       revalidate: 60,
     },
