@@ -28,7 +28,7 @@ const HomeSection = async () => {
             width={300}
             height={200}
             src={
-              "https://images.unsplash.com/photo-1658233427270-ba4d9d03b53c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+        "/lab.jpg"
             }
           />
         </div>

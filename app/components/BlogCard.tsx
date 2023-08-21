@@ -11,7 +11,6 @@ import {
 import { BlogItemType } from "@/lib/types";
 import Link from "next/link";
 import toast from "react-hot-toast";
-import { MdLocationCity } from "react-icons/md";
 
 type Props = BlogItemType;
 
@@ -63,7 +62,7 @@ export default function BlogCard (props: Props) {
 			<hr className="p-2"/>
 			<CardContent className="w-full text-slate-900">
 				<div className="flex justify-end gap-2 p-2 items-center font-semibold">
-					<MdLocationCity size={30} className="text-purple-600"/>
+
 					<p className="font-mono">
 						{props.location}
 					</p>

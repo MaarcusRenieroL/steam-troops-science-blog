@@ -114,7 +114,7 @@ export default function Page() {
 			</div>
 			<div className="w-full flex my-5">
 				<input
-					placeholder="Enter your Location"
+					placeholder="Enter a one line description"
 					type="text"
 					className="md:w-[500px] sm:w-[300px] m-auto text-slate-900 bg-gray-100 p-4 rounded-xl font-semibold"
 					{...register("location", { required: true })}
