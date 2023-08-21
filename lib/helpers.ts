@@ -53,4 +53,16 @@ export const getBlogById = async (id: string) => {
   const data = await res.json();
 
   return data.blog;
-}
+};
+
+export const getUserById = async (id: string) => {
+  const res = await fetch(`http://localhost:3000/api/users/${id}`, {
+    next: {
+      revalidate: 60,
+    },
+  });
+
+  const data = await res.json();
+
+  return data.user;
+};

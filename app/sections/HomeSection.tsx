@@ -4,9 +4,11 @@ import BlogCard from "../components/BlogCard";
 
 import Image from "next/image";
 import Link from "next/link";
+import { BlogItemType } from "@/lib/types";
 
 const HomeSection = async () => {
-  const blogs = await getAllBlogs(6);
+  
+  const blogs = await getAllBlogs();
 
   return (
     <section className="w-full my-4">
@@ -37,7 +39,7 @@ const HomeSection = async () => {
           <h2 className="text-2xl font-semibold">Recent Articles</h2>
         </div>
         <div className="flex w-full flex-wrap justify-center">
-          {blogs.map((blog) => (
+          {blogs.map((blog: BlogItemType) => (
             <BlogCard {...blog} key={blog.id} />
           ))}
         </div>
