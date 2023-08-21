@@ -19,7 +19,7 @@ export const GET = async (req: Request) => {
       },
     });
 
-    return generateSuccessMessage({ blog }, 500);
+    return generateSuccessMessage({ blog }, 200);
   } catch (error) {
     return generateErrorMessage({ error }, 500);
   } finally {
