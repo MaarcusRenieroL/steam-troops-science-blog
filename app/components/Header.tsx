@@ -59,6 +59,7 @@ const Header = () => {
             (item) => (
               <Link
                 href={item.url}
+                key={item.id}
                 className="text-gray-900 text-lg font-semibold hover:text-violet-600 duration-300"
               >
                 {item.name}
