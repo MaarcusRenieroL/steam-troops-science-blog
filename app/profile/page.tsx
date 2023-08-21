@@ -8,7 +8,6 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 import { getUserById } from "@/lib/helpers";
 
 import { UserItemType } from "@/lib/types";
-import { blogs } from "@/lib/utils";
 
 const ProfilePage = async () => {
   const sessionData = await getServerSession(authOptions);
@@ -43,16 +42,15 @@ const ProfilePage = async () => {
       <div className="w-full h-full flex flex-col">
         <div className="mx-auto">
           <p className="text-center bg-slate-100 p-3 rounded-md">
-            Blog Count : 10
+            Blog Count : {userData._count.blogs}
           </p>
         </div>
         <div className="flex flex-wrap justify-center p-4 my-5">
-          {blogs.map((blog) => (
+          {userData.blogs.map((blog) => (
             <BlogCard {...blog} key={blog.id} isProfile={true} />
           ))}
         </div>
       </div>
-      {JSON.stringify(userData)}
     </section>
   );
 };

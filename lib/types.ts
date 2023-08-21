@@ -16,4 +16,8 @@ export type UserItemType = {
   name: string;
   email: string;
   blogs: BlogItemType[];
+  _count: {
+    blogs: number;
+  };
+  message: string
 };

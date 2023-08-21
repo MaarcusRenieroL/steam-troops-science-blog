@@ -57,12 +57,10 @@ export const getBlogById = async (id: string) => {
 
 export const getUserById = async (id: string) => {
   const res = await fetch(`http://localhost:3000/api/users/${id}`, {
-    next: {
-      revalidate: 60,
-    },
+    cache: "no-store"
   });
 
   const data = await res.json();
 
-  return data.user;
+  return data ;
 };
